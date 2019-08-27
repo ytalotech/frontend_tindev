@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import './Login.css';
 
+import api from '../services/api';
+
 import logo from '../assets/logo.svg';
 
-export default function Login() {
+export default function Login({ history }) {
     // pegar valor do input
     //se eu fosse inicializar inout com algum valor eu colocaria aqui onde tem as aspas: userState('');
     const [username, setUsername] = useState('');
     
     // função que vai ser disparada quando um usuário der um submit
     // 'e' de evento
-    function handleSubmit(e){
+    async function handleSubmit(e){
         // aqui ele vai previnir o comportamento padrõa de um formulario que é enviar para outra página
         e.preventDefault();
 
-        console.log(username);
+        // irei utilizar post pos a nossa api utiliza o metodo post
+        const response = await api.post('/devs', {
+            //como minha variavel tem o valor username tambem então posso usar só username ao inves de username: username
+            username,
+        });
+        
+        const { _id } = response.data;
+
+        history.push(`/dev/${_id}`);
     }
     
     return (
