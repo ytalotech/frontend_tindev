@@ -1,0 +1,47 @@
+.login-container {
+    height: 100%;
+    display: flex;
+    /* alinha horizontalmente ao centro */
+    justify-content: center;
+    /* alinha verticalmente ao centro */
+    align-items: center;
+    height: 500px;
+}
+
+.login-container form{
+    width: 100%;
+    /* se o temanho do dispositivo for menor do que 300px ele vai colocar width 100% */
+    max-width: 300px;
+    display: flex;
+    /* quero que cadas elemento desse forma esteja um abaixo do outro */
+    flex-direction: column;
+}
+
+.login-container form input{
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    height: 48px;
+    /* padding horizontal */
+    padding:  0 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+/* deixando o placeholder com uma corzinha mais fraca */
+.login-container form input::placeholder{
+    color: #999;
+}
+
+.login-container form button {
+    margin-top: 10px;
+    border: 0;
+    border-radius: 4px;
+    height: 48px;
+    font-size: 16px;
+    background: #df4723;
+    /* negrito */
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
