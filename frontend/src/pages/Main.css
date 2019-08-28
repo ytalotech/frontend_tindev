@@ -1,0 +1,71 @@
+.main-container {
+    /* max-width: 980px; */
+    max-width: 880px;
+    margin: 0 auto;
+    padding:  50px 0;
+    text-align: center; /*centraliza*/
+}
+
+.main-container ul{
+    list-style: none; /* retira os pontos da lista */
+    display: grid;
+    /* grid-template-columns: 1fr 2fr 1fr;*/ /* 1fr esse numero atras do f é o tamanho da grid */
+    grid-template-columns: repeat(3, 1fr); /* aqui repete 3 vezes o 1fr */
+    grid-gap: 30px; /* separa cada grid */
+    margin-top:50px;
+}
+
+.main-container ul li{
+    display: flex;
+    flex-direction: column; /* organiza os itens em sentido vertical*/
+}
+
+/* ira diminuir o tamanho da imagem ul e li */
+.main-container ul li img{
+    max-width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+/* quero que nosso fulter ocupe todo o espaço necessario */
+.main-container ul li footer{
+    flex: 1; /* organiza os itens em sentido horizontal*/
+    background:  #fff;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+}
+
+.main-container ul li footer strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.main-container ul li footer p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    margin-top: 5px;
+}
+
+.main-container ul li .buttons {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.main-container ul li .buttons button {
+    height: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 0;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.main-container ul li .buttons button:hover img {
+    /* para ele subir -5 pixels */
+    transform: translateY(-5px);
+    transition: all 0.2s;
+}
