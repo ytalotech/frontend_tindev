@@ -11,7 +11,7 @@ import api from '../services/api';
 import logo from '../assets/logo.svg';
 import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
-import itsamatch from '../assets/itsamatch.pnp';
+import itsamatch from '../assets/itsamatch.png';
 
 //com esse match tenho todos os paramentros passado nessa rota
 export default function Main({ match }) {
@@ -21,7 +21,7 @@ export default function Main({ match }) {
     const [users, setUsers] = useState([]);
 
     //criar um estado para saber quando deu metch ou não
-    const [matchDev, setMatchDev] = useState(true);
+    const [matchDev, setMatchDev] = useState(null);
 
     //primeira parte é qual função quer executar e a segunda parte é quando irei executar
     //posso passar variaveis dentro do array e toda vez que nossa função for alterada será chamado novamente o useEffect
@@ -52,7 +52,7 @@ export default function Main({ match }) {
         
         //irei ouvir
         socket.on('match', dev => {
-            console.log(dev);
+            setMatchDev(dev);
         });
 
         // //preciso ouvir do backend a mensagem
@@ -123,13 +123,13 @@ export default function Main({ match }) {
                 ) }
                 {/* se tiver alguma informação dentro de matchDev ele vai entrar */}
                 { matchDev && (
-                    <div className="match-containe">
+                    <div className="match-container">
                         <img src={itsamatch} alt="It´s a match" />
-                        <img className="avatar" src="https://avatars1.githubusercontent.com/u/54129629?v=4" alt="" />
-                        <strong>Ytalo Lopes</strong>
-                        <p>CEO na Lopessoftec. Desenvolvedor web em PHP e aprendendo Javascript, reactJs, React Native, NodeJS,... Sempre em busca de novos conhecimentos.</p>
-
-                        <button type="button">FECHAR</button>
+                        <img className="avatar" src={matchDev.avatar} alt="" />
+                        <strong>{matchDev.name}</strong>
+                        <p>{matchDev.bio}</p>
+{/* uma ero function: irei criar uma função que chama a função setMatchDev que pssa valor nulo */}
+                        <button type="button" onClick={() => setMatchDev(null)}>FECHAR</button>
                     </div>
                 ) }
         </div>
